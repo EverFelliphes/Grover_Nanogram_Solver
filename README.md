@@ -10,7 +10,7 @@ Nonograms are small, visual examples of a much broader class of problems: **cons
 
 If you use this project in academic work, please cite the repository using [`CITATION.cff`](CITATION.cff). You can also cite the related paper:
 
-> Costa, E. F. S. da, Gomes, L. D. S., Santos, R. S. F. dos, Fonseca, J. E. da, Terada, R., Hayashi, V. T., and Ferreira, B. K. (2026). *A Quantum Approach to Nonogram Puzzle Solving Using Grover's Algorithm*. Congresso Brasileiro de Ciencias e Tecnologias Quanticas.
+> Costa, E. F. S. da, Gomes, L. D. S., Santos, R. S. F. dos, Fonseca, J. E. da, Terada, R., Hayashi, V. T., and Ferreira, B. K. (2026). *A Quantum Approach to Nonogram Puzzle Solving Using Grover's Algorithm*. <>.
 
 ---
 
