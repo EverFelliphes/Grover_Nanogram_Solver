@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata in this file."
+title: "Grover Nonogram Solver"
+type: software
+authors:
+  - family-names: "Costa"
+    given-names: "Ever Felliphe Sousa da"
+  - family-names: "Gomes"
+    given-names: "Leandro Dos Santos"
+  - family-names: "Santos"
+    given-names: "Rodrigo Sales Freire dos"
+  - family-names: "Fonseca"
+    given-names: "Jose Erinaldo da"
+  - family-names: "Terada"
+    given-names: "Routo"
+  - family-names: "Hayashi"
+    given-names: "Victor Takashi"
+  - family-names: "Ferreira"
+    given-names: "Bryan Kano"
+abstract: "A quantum computing implementation for solving nonogram puzzles using Grover's algorithm, with an oracle that encodes arithmetic row/column sum constraints and geometric block-contiguity constraints."
+keywords:
+  - nonogram
+  - Grover's algorithm
+  - quantum computing
+  - constraint satisfaction problem
+  - quantum oracle
+license: CC0-1.0
+preferred-citation:
+  type: conference-paper
+  title: "A Quantum Approach to Nonogram Puzzle Solving Using Grover's Algorithm"
+  conference:
+    name: "Congresso Brasileiro de Ciencias e Tecnologias Quanticas"
+  year: 2026
+  authors:
+    - family-names: "Costa"
+      given-names: "Ever Felliphe Sousa da"
+    - family-names: "Gomes"
+      given-names: "Leandro Dos Santos"
+    - family-names: "Santos"
+      given-names: "Rodrigo Sales Freire dos"
+    - family-names: "Fonseca"
+      given-names: "Jose Erinaldo da"
+    - family-names: "Terada"
+      given-names: "Routo"
+    - family-names: "Hayashi"
+      given-names: "Victor Takashi"
+    - family-names: "Ferreira"
+      given-names: "Bryan Kano"

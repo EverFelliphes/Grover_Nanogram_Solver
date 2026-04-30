@@ -2,6 +2,16 @@
 
 A quantum computing approach to solving [Nonogram](https://en.wikipedia.org/wiki/Nonogram) puzzles using **Grover's search algorithm**. The oracle encodes both arithmetic (row/column sum) and geometric (block contiguity) constraints, enabling the quantum circuit to amplify valid puzzle solutions from an exponential search space.
 
+## Why This Matters
+
+Nonograms are small, visual examples of a much broader class of problems: **constraint satisfaction problems (CSPs)**, where a solution must satisfy many rules at once. This project shows how those rules can be translated into a reversible quantum oracle and used inside Grover's algorithm. In plain terms, it is a hands-on demonstration of how quantum search can mark valid puzzle boards, amplify them, and recover solutions through measurement.
+
+## How to Cite
+
+If you use this project in academic work, please cite the repository using [`CITATION.cff`](CITATION.cff). You can also cite the related paper:
+
+> Costa, E. F. S. da, Gomes, L. D. S., Santos, R. S. F. dos, Fonseca, J. E. da, Terada, R., Hayashi, V. T., and Ferreira, B. K. (2026). *A Quantum Approach to Nonogram Puzzle Solving Using Grover's Algorithm*. Congresso Brasileiro de Ciencias e Tecnologias Quanticas.
+
 ---
 
 ## Repository Structure
@@ -11,6 +21,7 @@ Grover_Nanogram_Solver/
 ├── main.py                # CLI entry-point (argparse)
 ├── configs/               # Puzzle definitions in JSON
 │   └── 3x3_cross.json
+├── docs/                  # Documentation assets
 ├── src/
 │   ├── __init__.py
 │   ├── primitives.py      # Low-level quantum gates
@@ -21,7 +32,7 @@ Grover_Nanogram_Solver/
 │   ├── grover.py          # Diffuser, iteration calc, circuit runner
 │   ├── classical.py       # Brute-force solver (no Qiskit)
 │   └── visualization.py   # Plotting and metrics charts
-└── reference_code.py      # Original monolithic implementation
+└── requirements.txt       # Python dependencies
 ```
 
 ## Module Overview
@@ -83,13 +94,37 @@ Puzzle definitions as JSON files. Example (`3x3_cross.json`):
 
 ---
 
-## Dependency Graph
+## Dependency and Runtime Flow
 
+Module dependencies:
 ```
-primitives ← arithmetic ← oracle ← grover ← main
-    utils  ← geometry   ←────┘                 ↑
- classical ─────────────────────────────────────┘
-visualization ──────────────────────────────────┘
+main.py
+├── src/classical.py        # Ground-truth validation
+├── src/grover.py           # Full Grover circuit runner
+│   ├── src/oracle.py       # Nonogram oracle
+│   │   ├── src/arithmetic.py
+│   │   │   └── src/primitives.py
+│   │   ├── src/geometry.py
+│   │   └── src/utils.py
+│   └── src/utils.py
+└── src/visualization.py    # Plots and summary charts
+```
+
+Runtime flow:
+```
+JSON config
+   |
+   v
+classical solver ---------> expected valid bitstrings
+   |
+   v
+oracle construction ------> sum checks + contiguity checks
+   |
+   v
+Grover iterations --------> oracle + diffuser
+   |
+   v
+measurement counts -------> highlighted histogram + metrics
 ```
 
 > `utils` and `classical` have **no Qiskit dependency** and can be tested without any quantum libraries installed.
@@ -125,6 +160,8 @@ pip install -r requirements.txt
 All dependencies are listed in [`requirements.txt`](requirements.txt).
 
 ## Usage
+
+> Running the quantum simulation may take some time, especially for larger grids, denser clues, higher shot counts, or configurations that require more Grover iterations.
 
 ### Run the default puzzle suite
 
@@ -214,6 +251,16 @@ Execution errors      : 0
 
 Plots saved to: results/
 ```
+
+### Example results
+
+Measurement distribution for the `3x3_r[2][1][2]_c[1][3][1]` configuration:
+
+![Measurement distribution for the 3x3 cross configuration](docs/images/3x3_r%5B2%5D%5B1%5D%5B2%5D_c%5B1%5D%5B3%5D%5B1%5D.png)
+
+Summary metrics generated across the executed configurations:
+
+![Summary metrics chart](docs/images/summary_metrics.png)
 
 ---
 
